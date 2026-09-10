@@ -13,40 +13,142 @@
 
 # C. Langkah Kerja
 
-### Langkah 2: Kelas Rectangle minimal dan objek pertama
-
-Kode program Rectangle.java:   
+### Kode program Rectangle.java:  
+ 
 ```java
 package jobsheet2.id.ac.polinema;
 
 public class Rectangle {
     int width;
     int height;
+
+    Rectangle(int width, int height){
+        this.width = width;
+        this.height = height;
+    }
+    
+    int area() {
+        return width * height; 
+    }
+
+    int perimeter(){
+        return 2 * (width + height);
+    }
 }
 ```
 
+### Kode program Student.java:  
+ 
+```java
+package jobsheet2.id.ac.polinema;
 
-Kode program Main.java:   
+public class Student {
+    private String name;
+    private String studentId;
+    private double gpa;
+
+    Student(String name, String studentId, double gpa){
+        this.name = name;
+        this.studentId = studentId;
+        this.gpa = gpa;
+    }
+
+    public String describe(){
+        return name + " (" + studentId + ", GPA: " + gpa + ") ";
+    }
+}
+
+```
+
+
+### Kode program Main.java:   
 ```java
 package jobsheet2.id.ac.polinema;
 
 public class Main {
     public static void main(String[] args) {
-        Rectangle r = new Rectangle();
-        r.width = 6;
-        r.height = 4;
+        Rectangle original = new Rectangle(6, 4);
+        System.out.println("Area: " + original.area());
 
-        System.out.println("Rectangle " + r.width + "x" + r.height);
+        Rectangle copy = original;
+        copy.width = 10;
+        System.out.println("Via original: " +original.area());
+        System.out.println("Via copy: " + copy.area());
+
+        System.out.println();
+        
+        Rectangle[] shapes = new Rectangle[3];
+        shapes[0] = new Rectangle(6, 4);
+        shapes[1] = new Rectangle(3, 2);
+        shapes[2] = new Rectangle(8, 2);
+
+        for (Rectangle r : shapes) {
+            System.out.println("Area: " + r.area() + ", Perimeter: " + r.perimeter());
+        }
+
+        System.out.println();
+
+        Student s = new Student("Nadia", "S001", 3.8);
+        System.out.println(s.describe());
     }
 }
 ```
 
-Output:  
+### Output program
 ```code
-Rectangle 6x4
+Area: 24
+Via original: 40
+Via copy: 40
+
+Area: 24, Perimeter: 20
+Area: 6, Perimeter: 10
+Area: 16, Perimeter: 20
+
+Nadia (S001, GPA: 3.8) 
 ```
 
 
-### Langkah 3 & 4:
+# Latihan
+
+### Kode program Circle.java
+```java
+package jobsheet2.id.ac.polinema;
+
+public class Circle {
+    double radius;
+
+    Circle(double radius){
+        this.radius = radius;
+    }
+
+    double area(){
+        return Math.PI * radius * radius;
+    }
+
+    double circumference(){
+        return 2 * Math.PI * radius;
+    }
+}
+
+```
+
+### Kode program Main.java
+```code
+package jobsheet2.id.ac.polinema;
+
+public class Main {
+    public static void main(String[] args) {
+        double radius = 5;
+        Circle c = new Circle(radius);
+        System.out.println("Circle Area (radius: " + radius + "): " + c.area());
+        System.out.println("Circle Circumference (radius: " + radius + "): " + c.circumference());
+    }
+}
+```
 
 
+### Output program
+```code
+Circle Area (radius: 5.0): 78.53981633974483
+Circle Circumference (radius: 5.0): 31.41592653589793
+```
