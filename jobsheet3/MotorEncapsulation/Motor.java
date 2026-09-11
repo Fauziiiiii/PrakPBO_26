@@ -1,8 +1,9 @@
 package jobsheet3.MotorEncapsulation;
 
 public class Motor {
-    private  int kecepatan = 0;
-    private  boolean kontakOn = false;
+    private int kecepatan = 0;
+    private int kecepatanMaks = 100; 
+    private boolean kontakOn = false;
 
     public void nyalakanMesin(){
         kontakOn = true;
@@ -15,7 +16,11 @@ public class Motor {
 
     public void tambahKecepatan(){
         if (kontakOn == true) {
-            kecepatan += 5;
+            if(kecepatan >= kecepatanMaks){
+                System.out.println("Kecepatan sudah mencapai batas maksimum(100)");
+            }else{
+                kecepatan += 50;
+            }
         }else {
             System.out.println("Kecepatan tidak bisa bertambah karena Mesin Off! \n");
         }
