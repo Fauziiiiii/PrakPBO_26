@@ -6,5 +6,20 @@ public class MainPercobaan1 {
         Laptop l = new Laptop("Thinkpad", p);
 
         l.info();
+
+        Processor p1 = new Processor();
+        p1.setMerk("Intel i7");
+        p1.setCache(6);
+
+        Laptop l1 = new Laptop();
+        l1.setMerk("Thinkpad");
+        l1.setProc(p1);
+        l1.info();
+
+        Laptop l2 = new Laptop("Thinkpadd",
+            new Processor("Intel i5", 3)
+        );
+
+        l2.info();
     }
 }
