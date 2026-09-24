@@ -16,8 +16,24 @@ public class Gerbong {
         }
     }
 
-    public void setPenumpang(Penumpang penumpang, int nomor){
-        this.arrayKursi[nomor - 1].setPenumpang(penumpang);
+    // public void setPenumpang(Penumpang penumpang, int nomor){
+    //     this.arrayKursi[nomor - 1].setPenumpang(penumpang);
+    // }
+
+    public void setPenumpang(Penumpang penumpang, int nomor) {
+        int index = nomor - 1;
+        if (index < 0 || index >= arrayKursi.length) {
+            System.out.println("Nomor kursi " + nomor + " tidak valid!");
+            return;
+        }
+        
+        if (this.arrayKursi[index].getPenumpang() != null) {
+            System.out.println("Gagal: Kursi nomor " + nomor + " sudah ditempati oleh " 
+                + this.arrayKursi[index].getPenumpang().getNama() + "!");
+        } else {
+            this.arrayKursi[index].setPenumpang(penumpang);
+            System.out.println("Berhasil memesan kursi nomor " + nomor + " untuk " + penumpang.getNama());
+        }
     }
 
     public String info(){
